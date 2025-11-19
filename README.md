@@ -38,6 +38,10 @@ TalkingHeadApp/
             ├── coords.pkl
             └── ultralight.pth
 ```
+### Additional checkpoints download
+Please go to this link https://drive.google.com/drive/folders/1FOC_MD6wdogyyX_7V1d4NDIO7P9NlSAJ?usp=sharing, \
+download the 'wav2lip256.pth' checkpoint and place it as ```models/wav2lip.pth``` 
+
 
 ## Step 1: Create an Output Directory
 
