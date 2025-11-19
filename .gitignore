@@ -1,0 +1,18 @@
+# Ignore contents of data
+data/*
+
+# Ignore specific build/cache folders
+__pycache__/
+.gradio/
+ultralight/data/*
+ultralight/checkpoints/*
+ultralight/__pycache__/
+jobs/
+models/wav2lip.pth
+ultralight/data_utils/encoder.onnx
+
+# Exceptions (Keep these)
+!data/.gitkeep
+!data/samples
+!ultralight/data/.gitkeep
+!ultralight/results/.gitkeep
