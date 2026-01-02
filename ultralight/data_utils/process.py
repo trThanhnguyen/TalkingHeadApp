@@ -1,6 +1,7 @@
 # preprocessing code before training
 # steps: preprocess (this) -> train syncnet -> train avatar -> gen_avatar
 import os
+import sys
 import cv2
 import argparse
 import numpy as np
@@ -43,10 +44,10 @@ def get_audio_feature(wav_path, mode, data_utils_path):
     
     if mode == "wenet":
         script_path = os.path.join(data_utils_path, "wenet_infer.py")
-        os.system("python " + script_path + " --wav " + wav_path)
+        os.system(sys.executable + ' ' + script_path + " --wav " + wav_path)
     if mode == "hubert":
         script_path = os.path.join(data_utils_path, "hubert.py")
-        os.system("python " + script_path + " --wav " + wav_path)
+        os.system(sys.executable + ' ' + script_path + " --wav " + wav_path)
     
 def get_landmark(path, base_dir, landmarks_dir, data_utils_dir):
     print("detecting landmarks...")

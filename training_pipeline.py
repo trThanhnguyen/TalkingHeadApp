@@ -9,6 +9,7 @@ run_gen_avatar
 
 full_auto_train_pipeline
 """
+import sys
 import shutil
 import subprocess
 from pathlib import Path
@@ -41,7 +42,7 @@ def run_ultralight_preprocess(video_in_dataset: Path, asr: str, progress=None) -
     if progress:
         progress(0.08, desc="[1/4] Preprocessing: extract audio/images/landmarks/ASR features…")
     cmd = [
-        "python", str(PROCESS_PY), str(video_in_dataset), "--asr", asr
+        sys.executable, str(PROCESS_PY), str(video_in_dataset), "--asr", asr
     ]
     subprocess.check_call(cmd, cwd=str(ULTRALIGHT_DIR))
     return dataset_dir
@@ -52,7 +53,7 @@ def run_syncnet_training(dataset_dir: Path, asr: str, out_dir: Path, epochs: int
     if progress:
         progress(0.30, desc="[2/4] Training SyncNet…")
     cmd = [
-        "python", str(SYNCNET_PY),
+        sys.executable, str(SYNCNET_PY),
         "--save_dir", str(out_dir),
         "--dataset_dir", str(dataset_dir),
         "--asr", asr,
@@ -74,7 +75,7 @@ def run_avatar_training(dataset_dir: Path, asr: str, syncnet_ckpt: Path, out_dir
     if progress:
         progress(0.55, desc="[3/4] Training avatar model…")
     cmd = [
-        "python", str(TRAIN_PY),
+        sys.executable, str(TRAIN_PY),
         "--use_syncnet",
         "--syncnet_checkpoint", str(syncnet_ckpt),
         "--dataset_dir", str(dataset_dir),
@@ -98,7 +99,7 @@ def run_gen_avatar(dataset_dir: Path, avatar_ckpt: Path, internal_id: str, tmp_r
         progress(0.82, desc="[4/4] Generating avatar assets…")
     # genavatar.py writes hardcoded under ./results/avatars/<avatar_id>
     cmd = [
-        "python", str(GENAVATAR_PY),
+        sys.executable, str(GENAVATAR_PY),
         "--dataset", str(dataset_dir),
         "--checkpoint", str(avatar_ckpt),
         "--avatar_id", internal_id,
