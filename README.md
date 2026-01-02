@@ -105,3 +105,7 @@ To stop the application, run:
 ```bash
 docker stop talking-head-service
 ```
+Clean up:
+```bash
+docker rm talking-head-service
+```
