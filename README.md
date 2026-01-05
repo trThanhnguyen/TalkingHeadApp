@@ -70,6 +70,7 @@ Run the following command to start your application.
 
 ```bash
 docker run -d --gpus all \
+  --shm-size=2g \
   -p 7860:7860 \
   -v "$(pwd)/data:/app/data:ro" \
   -v "$(pwd)/jobs:/app/jobs" \
@@ -81,6 +82,7 @@ docker run -d --gpus all \
 
 * `docker run -d`: Run the container in "detached" mode (in the background).
 * `--gpus all`: **(Critical)** Gives the container access to all your host's NVIDIA GPUs.
+* `--shm-size=2g`: **(Critical)** Gives the container 2GB of memory.
 * `-p 7860:7860`: Maps port `7860` on your host machine to port `7860` in the container (where Gradio is running).
 * `-v "$(pwd)/data:/app/data:ro"`: **(Critical)** Mounts your local `data` directory (with avatars) into the container at `/app/data` in **r**ead-**o**nly (`:ro`) mode.
 * `-v "$(pwd)/jobs:/app/jobs"`: **(Critical)** Mounts your local `jobs` directory (for outputs) into the container at `/app/jobs`. **Any videos the app creates will appear here.**
