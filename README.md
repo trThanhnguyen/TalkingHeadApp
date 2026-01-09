@@ -84,7 +84,7 @@ docker run -d --gpus all \
 * `--gpus all`: **(Critical)** Gives the container access to all your host's NVIDIA GPUs.
 * `--shm-size=2g`: **(Critical)** Gives the container 2GB of memory.
 * `-p 7860:7860`: Maps port `7860` on your host machine to port `7860` in the container (where Gradio is running).
-* `-v "$(pwd)/data:/app/data:ro"`: **(Critical)** Mounts your local `data` directory (with avatars) into the container at `/app/data` in **r**ead-**o**nly (`:ro`) mode.
+* `-v "$(pwd)/data:/app/data"`: **(Critical)** Mounts your local `data` directory (with avatars) into the container at `/app/data`.
 * `-v "$(pwd)/jobs:/app/jobs"`: **(Critical)** Mounts your local `jobs` directory (for outputs) into the container at `/app/jobs`. **Any videos the app creates will appear here.**
 * `--name talking-head-service`: Name the service.
 * `talking-head-app`: The name of the image we've built in Step 2.
