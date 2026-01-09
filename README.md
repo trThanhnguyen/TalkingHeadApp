@@ -72,7 +72,7 @@ Run the following command to start your application.
 docker run -d --gpus all \
   --shm-size=2g \
   -p 7860:7860 \
-  -v "$(pwd)/data:/app/data:ro" \
+  -v "$(pwd)/data:/app/data" \
   -v "$(pwd)/jobs:/app/jobs" \
   --name talking-head-service \
   talking-head-app
